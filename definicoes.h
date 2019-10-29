@@ -1,5 +1,5 @@
-#ifndef __DEF
-#define __DEF
+#ifndef __DEF__
+#define __DEF__
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -23,29 +23,6 @@ typedef struct t{
     int linha;
 } Token;
 
-char palavras_reservadas[22][10] = {
-"break"
-,"case"
-,"char"
-,"continue"
-,"default"
-,"do"
-,"double"
-,"else"
-,"float"
-,"for"
-,"if"
-,"int"
-,"long"
-,"return"
-,"short"
-,"sizeof"
-,"struct"
-,"switch"
-,"typedef"
-,"unsigned"
-,"void"
-,"while" };
 
 #define ADD 25            // +
 #define SUB 26            // -
@@ -65,19 +42,20 @@ char palavras_reservadas[22][10] = {
 #define MENOR 40          // <
 #define MAIOR_IGUAL 41    // >=
 #define MENOR_IGUAL 42    // <=
+#define DIFERENTE 43      // !=
 
 
-#define PONTO_VIRGULA 43  // ;
-#define O_COLCHETE 44     // [
-#define C_COLCHETE 45     // ]
-#define VIRGULA 46        // ,
-#define O_PARENTESES 47   // (
-#define C_PARENTESES 48   // )
-#define ASPAS_D 49        // "
-#define ASPAS_S 50        // '
-#define O_CHAVE 51        // {
-#define C_CHAVE 52        // }
-#define DOIS_PONTOS 53    // :
+#define PONTO_VIRGULA 44  // ;
+#define O_COLCHETE 45     // [
+#define C_COLCHETE 46     // ]
+#define VIRGULA 47        // ,
+#define O_PARENTESES 48   // (
+#define C_PARENTESES 49   // )
+#define ASPAS_D 50        // "
+#define ASPAS_S 51        // '
+#define O_CHAVE 52        // {
+#define C_CHAVE 53        // }
+#define DOIS_PONTOS 54    // :
 
 
-#endif // __DEF
+#endif // __DEF__

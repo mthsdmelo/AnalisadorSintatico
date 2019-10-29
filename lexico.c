@@ -1,9 +1,30 @@
 #include "lexico.h"
-#include "definicoes.h"
 
 Token token;
 
-extern char palavras_reservadas[22][10];
+const char palavras_reservadas[22][10] = {
+"break" //3
+,"case" //4
+,"char" //5
+,"continue"//6
+,"default"//7
+,"do"//8
+,"double"//9
+,"else"//10
+,"float"//11
+,"for"//12
+,"if"//13
+,"int"//14
+,"long"//15
+,"return"//16
+,"short"//17
+,"sizeof"//18
+,"struct"//19
+,"switch"//20
+,"typedef"//21
+,"unsigned"//22
+,"void"//23
+,"while" };//24
 
 void gera_token_palavra(char palavra[], int coluna, int linha, FILE * arq) {
     int i;
@@ -111,6 +132,8 @@ void gera_token_operador(char c[], int coluna, int linha, FILE * arq) {
         token.id = MAIOR_IGUAL;
     } else if (strcmp(c, "<=") == 0) {
         token.id = MENOR_IGUAL;
+    } else if (strcmp(c, "!=") == 0) {
+        token.id = DIFERENTE;
     }
     token.linha = linha;
     token.coluna = coluna;
@@ -128,7 +151,7 @@ void gera_token_literal(char str[], FILE * arq) {
 void gera_tokens(char * filename) {
     FILE * arq = fopen(filename, "r");
     FILE * erros = fopen("logErros.txt", "w");
-    FILE * lista_tokens = fopen("lista_tokens.txt", "wb");
+    FILE * lista_tokens = fopen("lista_tokens", "wb");
     int coluna = 0, linha = 0, i;
     char palavra[MAX_PALAVRA];
     char numero[MAX_NUMERO];
@@ -157,8 +180,7 @@ void gera_tokens(char * filename) {
                 i++;
                 if (c == 'x') {
                     numero[i] = c;
-                    for (;
-                        (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'); i++) {
+                    for (;(c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'); i++) {
                         numero[i] = c;
                         c = fgetc(arq);
                         coluna++;
@@ -284,8 +306,7 @@ void gera_tokens(char * filename) {
             coluna++;
         }
         //---------------------------Operadores----------------------------
-        else if (c == '*' || c == '+' || c == '-' || c == '=' || c == '<' ||
-            c == '>') {
+        else if (c == '*' || c == '+' || c == '-' || c == '=' || c == '<' ||c == '>' || c == '!') {
             operador[0] = c;
             c = fgetc(arq);
             coluna++;

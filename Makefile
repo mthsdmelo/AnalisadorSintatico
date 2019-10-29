@@ -1,13 +1,10 @@
 all : compilar
 
-compilar : definicoes.o lexico.o
+compilar : sintatico.c sintatico.h lexico.o
 	gcc -g sintatico.c -g lexico.c -o compilar -lm -Wall
 
 lexico.o : lexico.c lexico.h
 	gcc lexico.c -c -lm -Wall
-
-definicoes.o : definicoes.h
-	gcc definicoes.h -c -lm -Wall
 
 .PHONY:clean
 
